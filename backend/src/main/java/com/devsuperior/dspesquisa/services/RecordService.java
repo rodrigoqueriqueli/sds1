@@ -3,6 +3,8 @@ package com.devsuperior.dspesquisa.services;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,9 +49,13 @@ public class RecordService { // servico pra trabalhar com games
 		//variavel entity recebe resultado do salvamento--referencia atualizada pro objeto salvo
 		entity = repository.save(entity); 
 		return new RecordDTO(entity);
-		
-		
-		
+	
+	}
+
+	//readOnly pois é só uma operação de busca
+	@Transactional(readOnly = true)	
+	public Page<RecordDTO> findByMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
+		return repository.findByMoments(minDate, maxDate, pageRequest).map(x -> new RecordDTO(x));
 	}
 
 }
