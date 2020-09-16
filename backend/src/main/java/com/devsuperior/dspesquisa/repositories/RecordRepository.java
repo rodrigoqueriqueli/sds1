@@ -17,9 +17,9 @@ import com.devsuperior.dspesquisa.entities.Record;
 
 //GameRepository objeto reponsavel por acessar dados de games..ela ja está pronta pra acessar os dados de games por herdar classe JpaRepository
 @Repository
-public interface RecordRepository extends JpaRepository<Game, Long>{
+public interface RecordRepository extends JpaRepository<Record, Long>{
 
-	Record save(Record entity);
+	//Record save(Record entity);
 
 	@Query("SELECT obj FROM Record obj WHERE "
 			+ "(coalesce(:min, null) IS NULL OR obj.moment >= :min) AND "
