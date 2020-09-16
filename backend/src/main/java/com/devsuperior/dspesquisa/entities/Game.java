@@ -29,6 +29,8 @@ public class Game implements Serializable{
 	private Platform platform;
 
 	//Associacao, ref para um genero
+	/*@JsonIgnore pra ignorar, pra nao serializar o json */
+	
 	@ManyToOne
 	@JoinColumn(name = "genre_id") //especificar o nome do campo que vai ser a chave estrangeira no banco
 	private Genre genre; //chave estrangeira
@@ -37,6 +39,8 @@ public class Game implements Serializable{
 	
 	//Associacao com Record
 	//para instanciar uso arraylist classe que implementa a interface list
+	/*@JsonIgnore pra ignorar, pra nao serializar o json */
+	
 	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>(); 
 	

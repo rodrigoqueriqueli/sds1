@@ -1,6 +1,7 @@
 package com.devsuperior.dspesquisa.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.devsuperior.dspesquisa.entities.Game;
 
@@ -9,6 +10,7 @@ import com.devsuperior.dspesquisa.entities.Game;
 //e o ID da entidade
 
 //GameRepository objeto reponsavel por acessar dados de games..ela ja está pronta pra acessar os dados de games por herdar classe JpaRepository
+@Repository
 public interface RecordRepository extends JpaRepository<Game, Long>{
 
 	
