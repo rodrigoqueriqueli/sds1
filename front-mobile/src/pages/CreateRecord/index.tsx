@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import Header from '../../components/Header';
 import PlatformCard from './PlatformCard';
 import { GamePlatform } from './types';
 import RNPickerSelect from 'react-native-picker-select';
+import { FontAwesome5 as Icon } from '@expo/vector-icons';
+
+const placeholder = {
+    label: 'Choose the game',
+    value: null
+}
 
 const CreateRecord = () => {
 
     const [platform, setPlatform] = useState<GamePlatform>();
+    const [selectedGame, setSelectedGame] = useState('');
 
     const handleChangePlatform = (selectedPlatform: GamePlatform) => {
         setPlatform(selectedPlatform);
@@ -49,11 +56,62 @@ const CreateRecord = () => {
                         activePlatform={platform}
                     />
                 </View>
-                
+                <RNPickerSelect
+                    onValueChange = { value => {
+                        setSelectedGame(value);
+                    }}
+                    placeholder={placeholder}
+                    items={[
+                        {label: '', value: ''},
+                        {label: '', value: ''},
+                        {label: '', value: ''},
+                    ]}
+
+                    style = {pickerSelectStyles}
+                    Icon= {() => {
+                        return <Icon name= "chevron-down" color="#9E9E9E" size={25}/>
+                    }}
+                />
             </View>
         </>
     );
 }
+
+const pickerSelectStyles = StyleSheet.create(
+    {
+        inputIOS: {
+          fontSize: 16,
+          paddingVertical: 12,
+          paddingHorizontal: 20,
+          backgroundColor: '#FFF',
+          borderRadius: 10,
+          color: '#ED7947',
+          paddingRight: 30,
+          fontFamily: "Play_700Bold",
+          height: 50
+        },
+        inputAndroid: {
+          fontSize: 16,
+          paddingVertical: 12,
+          paddingHorizontal: 20,
+          backgroundColor: '#FFF',
+          borderRadius: 10,
+          color: '#ED7947',
+          paddingRight: 30,
+          fontFamily: "Play_700Bold",
+          height: 50
+        },
+        placeholder: {
+          color: '#9E9E9E',
+          fontSize: 16,
+          fontFamily: "Play_700Bold",
+        },
+        iconContainer: {
+          top: 10,
+          right: 12,
+        }
+      }
+)
 
 const styles = StyleSheet.create({
     container: {
