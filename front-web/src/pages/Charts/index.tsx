@@ -21,7 +21,7 @@ const initialPieData = {
     series: []
 }
 
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = 'https://sds1-rodrigo-queriqueli.herokuapp.com';
 
 const Charts = () => {
     //padrao do react hooks
